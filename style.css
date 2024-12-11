@@ -265,13 +265,12 @@ footer {
   width: 150px;
 
   position: fixed;
-  
   top: 80%;
   color: white;
 }
 
 .bot img {
-  width: 70px;
+  width: 50px;
   border-radius: 150px;
 
   box-shadow: 0 0 10px 0 #1a2633;
