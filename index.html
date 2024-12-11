@@ -21,13 +21,21 @@
       <section class="section_hero">
         <nav>
           <div>
-            <a href="#">Contacto</a>
-            <a href="#">Blog</a>
-            <a href="#">Afiliados</a>
+            <a href="./pages/linksnav/nav.html#contactos">Contacto</a>
+            <a href="./pages/linksnav/nav.html#blog">Blog</a>
+            <a href="./pages/linksnav/nav.html#afiliados">Afiliados</a>
           </div>
-          <a href="#">
-            <img src="./icons/lines.svg" alt="Lineas" class="hero_img" />
-          </a>
+          <button id="openMenu">☰ Abrir Menú</button>
+
+          <div id="myMenu" class="menu">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()"
+              >&times;</a
+            >
+            <a href="./index.html">Inicio</a>
+            <a href="./pages/nivel3/CERTI 3/index.html">Contacto</a>
+            <a href="./pages/nivel3/CERTI 3/index.html">Blog</a>
+            <a href="./pages/nivel3/CERTI 3/index.html">Afiliados</a>
+          </div>
         </nav>
         <article class="hero_title">
           <img
@@ -162,5 +170,16 @@
         </footer>
       </section>
     </main>
+    <script>
+      function openMenu() {
+        document.getElementById("myMenu").style.width = "250px";
+      }
+
+      function closeMenu() {
+        document.getElementById("myMenu").style.width = "0";
+      }
+
+      document.getElementById("openMenu").onclick = openMenu;
+    </script>
   </body>
 </html>

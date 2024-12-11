@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación de Phishing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simulación de Phishing</h1>
+        <div id="email-list"></div>
+        <button id="submit-btn">Enviar respuestas</button>
+        <div id="feedback-section"></div>
+    </div>
+    <script>
+        const emails = [
+            {
+                subject: "Actualización de tu cuenta bancaria",
+                content: "Haz clic en este enlace para confirmar tu información: <a href='http://falso-banco.com'>http://falso-banco.com</a>",
+                isPhishing: true
+            },
+            {
+                subject: "Oferta especial de nuestro proveedor",
+                content: "Aprovecha este descuento exclusivo visitando <a href='https://proveedor-confiable.com'>https://proveedor-confiable.com</a>.",
+                isPhishing: false
+            },
+            {
+                subject: "Urgente: Verifica tu cuenta",
+                content: "Por favor, ingresa tus credenciales para evitar el cierre de tu cuenta. <a href='http://fake-security-login.com'>http://fake-security-login.com</a>",
+                isPhishing: true
+            },
+            {
+                subject: "Reunión confirmada",
+                content: "Hola, confirmamos nuestra reunión del lunes a las 3:00 PM. Saludos, Juan.",
+                isPhishing: false
+            }
+        ];
+
+        const emailList = document.getElementById('email-list');
+        const feedbackSection = document.getElementById('feedback-section');
+        const submitBtn = document.getElementById('submit-btn');
+
+        emails.forEach((email, index) => {
+            const emailDiv = document.createElement('div');
+            emailDiv.classList.add('email');
+            emailDiv.innerHTML = `
+                <p><strong>Asunto:</strong> ${email.subject}</p>
+                <p>${email.content}</p>
+                <label>
+                    <input type="radio" name="email-${index}" value="legit"> Legítimo
+                </label>
+                <label>
+                    <input type="radio" name="email-${index}" value="phishing"> Phishing
+                </label>
+            `;
+            emailList.appendChild(emailDiv);
+        });
+
+        submitBtn.addEventListener('click', () => {
+            feedbackSection.innerHTML = '';
+            let correctAnswers = 0;
+
+            emails.forEach((email, index) => {
+                const selectedOption = document.querySelector(`input[name="email-${index}"]:checked`);
+                if (selectedOption) {
+                    const isCorrect = (selectedOption.value === 'phishing' && email.isPhishing) || 
+                                      (selectedOption.value === 'legit' && !email.isPhishing);
+                    const feedbackDiv = document.createElement('div');
+                    feedbackDiv.classList.add('feedback', isCorrect ? 'correct' : 'wrong');
+                    feedbackDiv.innerHTML = `
+                        <p>${isCorrect ? "Correcto" : "Incorrecto"}: ${email.subject}</p>
+                        <p>${email.isPhishing 
+                            ? "Este correo es phishing porque tiene un enlace falso o pide información sensible." 
+                            : "Este correo es legítimo porque proviene de una fuente confiable y su contenido es coherente."}</p>
+                    `;
+                    feedbackSection.appendChild(feedbackDiv);
+                    if (isCorrect) correctAnswers++;
+                } else {
+                    const feedbackDiv = document.createElement('div');
+                    feedbackDiv.classList.add('feedback', 'wrong');
+                    feedbackDiv.innerHTML = `<p>No seleccionaste una opción para: ${email.subject}</p>`;
+                    feedbackSection.appendChild(feedbackDiv);
+                }
+            });
+
+            const summary = document.createElement('div');
+            summary.classList.add('feedback', 'correct');
+            summary.innerHTML = `<p>Has identificado correctamente ${correctAnswers} de ${emails.length} correos.</p>`;
+            feedbackSection.appendChild(summary);
+        });
+    </script>
+</body>
+</html>

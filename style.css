@@ -29,8 +29,7 @@ section {
   justify-content: space-between;
 }
 
-.section_hero nav a {
-  color: black;
+.section_hero nav div a {
   text-decoration: none;
 }
 
@@ -105,8 +104,7 @@ section {
 }
 .section_capacitate div p {
   font-size: clamp(0.2rem, 3vw, 1.2rem);
-  max-height: 400px;
-  min-width: 300px;
+  max-width: 600px;
 }
 .section_capacitate img {
   display: flex;
@@ -153,6 +151,7 @@ section {
   gap: 3pc;
   font-size: 20px;
   font-weight: 500;
+  padding: 3pc 0;
 }
 
 .section_impacto .ul p {
@@ -299,4 +298,50 @@ i {
   section img {
     object-fit: contain;
   }
+}
+
+/* ########################### */
+
+.menu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #f1f1f1;
+}
+
+.menu .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 24px;
+  margin-left: 50px;
+}
+
+#openMenu {
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  background-color: #111;
+  border: none;
+  padding: 10px 20px;
 }

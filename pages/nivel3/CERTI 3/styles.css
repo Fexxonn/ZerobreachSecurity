@@ -1,0 +1,110 @@
+/* Configuración general */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background:white;
+    color: #333;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Encabezado */
+h1 {
+    text-align: center;
+    color: #007bff;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Estilo para cada correo */
+.email {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.email:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background: #fefefe;
+}
+
+.email p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.email a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.email a:hover {
+    text-decoration: underline;
+}
+
+/* Botón de envío */
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Feedback */
+.feedback {
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.feedback.correct {
+    background: #d4edda;
+    color: #155724;
+    border-left: 5px solid #28a745;
+}
+
+.feedback.wrong {
+    background: #f8d7da;
+    color: #721c24;
+    border-left: 5px solid #dc3545;
+}
+
+/* Mensaje final */
+.feedback-summary {
+    margin-top: 20px;
+    padding: 15px;
+    background: #cce5ff;
+    color: #004085;
+    border-left: 5px solid #007bff;
+    font-weight: bold;
+    text-align: center;
+}
+
