@@ -287,13 +287,15 @@ i {
 }
 
 @media screen and (max-width: 700px) {
-  .section_capacitate ,
+  .section_capacitate,
   .section_impacto div,
   .section_caso_real {
     flex-wrap: wrap;
-
   }
   section {
     padding: 1pc;
+  }
+  section img {
+    object-fit: contain;
   }
 }
