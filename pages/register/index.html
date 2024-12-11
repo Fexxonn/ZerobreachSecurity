@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="../login/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="registro">
+        <h2>Regístrate</h2>
+        <form id="formRegistro">
+          <label for="nombres">Nombres</label>
+          <input
+            type="text"
+            id="nombres"
+            name="nombres"
+            placeholder="Ingresa tus nombres"
+            required
+          />
+
+          <label for="apellidos">Apellidos</label>
+          <input
+            type="text"
+            id="apellidos"
+            name="apellidos"
+            placeholder="Ingresa tus apellidos"
+            required
+          />
+
+          <label for="correo">Correo</label>
+          <input
+            type="email"
+            id="correo"
+            name="correo"
+            placeholder="Ingresa tu correo"
+            required
+          />
+
+          <label for="usuario">Usuario</label>
+          <input
+            type="text"
+            id="usuario"
+            name="usuario"
+            placeholder="Ingresa tu usuario"
+            required
+          />
+
+          <label for="contraseña">Contraseña</label>
+          <input
+            type="password"
+            id="contraseña"
+            name="contraseña"
+            placeholder="Ingresa tu contraseña"
+            required
+          />
+
+          <button type="submit">Registrarse</button>
+        </form>
+        <div class="link">
+          <span
+            >¿Ya tienes una cuenta?
+            <a href="../login/index.html" onclick="mostrarInicioSesion()"
+              >Inicia Sesión</a
+            ></span
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

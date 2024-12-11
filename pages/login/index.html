@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="inicioSesion">
+        <h2>Inicia Sesión</h2>
+        <form id="formInicioSesion">
+          <label for="correoInicio">Correo</label>
+          <input
+            type="email"
+            id="correoInicio"
+            name="correoInicio"
+            placeholder="Ingresa tu correo"
+            required
+          />
+
+          <label for="contraseñaInicio">Contraseña</label>
+          <input
+            type="password"
+            id="contraseñaInicio"
+            name="contraseñaInicio"
+            placeholder="Ingresa tu contraseña"
+            required
+          />
+
+          <button type="submit">Iniciar Sesión</button>
+        </form>
+        <div class="link">
+          <span
+            >¿No tienes una cuenta?
+            <a href="../register/index.html" onclick="mostrarInicioSesion()"
+              >Registrarse</a
+            ></span
+          >
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const formInicioSesion = document.getElementById("formInicioSesion");
+      const correoInicio = document.getElementById("correoInicio");
+      const contraseñaInicio = document.getElementById("contraseñaInicio");
+
+      formInicioSesion.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const correoInfo = correoInicio.value;
+        const contraseñaInfo = contraseñaInicio.value;
+
+        if (correoInfo === "admin@gmail.com" && contraseñaInfo === "admin") {
+          window.location.href = "../Certificados.html";
+          console.log(correoInfo);
+          console.log(contraseñaInfo);
+        }
+      });
+    </script>
+  </body>
+</html>
