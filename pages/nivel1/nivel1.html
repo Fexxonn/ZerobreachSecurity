@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validador de Contraseñas</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    input[type="password"] {
+      width: 93%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    #password-strength {
+      height: 15px;
+      background-color: #ddd;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+
+    #feedback, #attempts {
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+
+    #approved {
+      display: none;
+      background-color: #008CBA;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Validador de Contraseñas</h1>
+    <p>Escribe una contraseña y verifica su fortaleza. Tienes un máximo de 5 intentos.</p>
+    <input type="password" id="password" placeholder="Escribe tu contraseña">
+    <button id="verify">Verificar</button>
+    <div id="password-strength"></div>
+    <p id="feedback"></p>
+    <p id="attempts">Intentos restantes: 5</p>
+    <button id="approved">Aprobado</button>
+  </div>
+  <script src="password-validator.js"></script>
+</body>
+</html>

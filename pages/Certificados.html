@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificados</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .certificados {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .certificado {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        flex: 1;
+        max-width: 30%;
+        padding: 20px;
+        text-align: left;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .certificado:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .certificado img {
+        width: 100%;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .certificado h2 {
+        color: #007bff;
+        font-size: 1.5rem;
+        margin-top: 15px;
+      }
+
+      .certificado p {
+        color: #555;
+        line-height: 1.6;
+        margin: 15px 0;
+      }
+
+      .certificado a {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .certificado a:hover {
+        background-color: #0056b3;
+      }
+
+      @media (max-width: 768px) {
+        .certificado {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Obtén tu Certificado</h1>
+      <p>
+        Elige el nivel de certificado que deseas obtener y avanza en tu
+        aprendizaje.
+      </p>
+
+      <div class="certificados">
+        <div class="certificado">
+          <h2>Certificado Nivel 1</h2>
+          <p>
+            Simulación interactiva: Aprende a crear contraseñas fuertes y únicas
+            para proteger activos sensibles.
+          </p>
+          <a href="nivel1.html">Ver más</a>
+        </div>
+
+        <div class="certificado">
+          <h2>Certificado Nivel 2</h2>
+          <p>
+            Cuestionario dinámico: Descubre la importancia de mantener tus
+            sistemas actualizados y protegerte de vulnerabilidades.
+          </p>
+          <a href="nivel2.html">Ver más</a>
+        </div>
+
+        <div class="certificado">
+          <h2>Certificado Nivel 3</h2>
+          <p>
+            Próximamente: Aprende a identificar intentos de phishing y a
+            proteger información sensible con ejercicios prácticos.
+          </p>
+          <a href="#">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Ciberseguridad</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+        overflow-y: auto;
+        max-height: 90vh;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #333;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .question {
+        margin-bottom: 1.5rem;
+      }
+
+      .question p {
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #555;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .options label {
+        margin-bottom: 0.5rem;
+      }
+
+      button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 0.75rem;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .result {
+        margin-top: 2rem;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      .result.correct {
+        color: green;
+      }
+
+      .result.incorrect {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Examen de Ciberseguridad Nivel Intermedio</h2>
+      <form id="quizForm">
+        <!-- Generación automática de 30 preguntas -->
+        <div id="questions"></div>
+        <button type="button" onclick="calcularResultados()">
+          Enviar Resultados
+        </button>
+      </form>
+      <div id="resultados"></div>
+    </div>
+
+    <script>
+      const preguntas = [
+        {
+          pregunta: "¿Cuál es el propósito principal de un firewall?",
+          opciones: [
+            "Filtrar el tráfico de red",
+            "Almacenar datos de red",
+            "Monitorear usuarios",
+            "Detectar intrusos",
+          ],
+          correcta: "a",
+        },
+        {
+          pregunta: "Selecciona dos medidas comunes para proteger contraseñas:",
+          opciones: [
+            "Usar contraseñas largas y complejas",
+            "Compartir la contraseña con personas de confianza",
+            "Cambiar regularmente las contraseñas",
+            "Guardarlas en un bloc de notas",
+          ],
+          correcta: ["a", "c"],
+          multiple: true,
+        },
+        {
+          pregunta: '¿Qué significa "phishing" en ciberseguridad?',
+          opciones: [
+            "Robar datos personales mediante engaños",
+            "Infectar dispositivos con malware",
+            "Desencriptar contraseñas de usuarios",
+            "Acceso no autorizado a servidores",
+          ],
+          correcta: "a",
+        },
+        {
+          pregunta:
+            "¿Qué tipo de malware se disfraza como un software legítimo?",
+          opciones: ["Ransomware", "Spyware", "Troyano", "Adware"],
+          correcta: "c",
+        },
+        {
+          pregunta:
+            "Verdadero o falso: Usar una red Wi-Fi pública siempre es seguro.",
+          opciones: ["Verdadero", "Falso"],
+          correcta: "b",
+        },
+        {
+          pregunta:
+            "¿Cuál es la técnica utilizada para interceptar comunicaciones de red?",
+          opciones: [
+            "Phishing",
+            "Man-in-the-middle",
+            "SQL Injection",
+            "Spoofing",
+          ],
+          correcta: "b",
+        },
+        {
+          pregunta:
+            "Selecciona dos herramientas comunes para analizar vulnerabilidades:",
+          opciones: ["Wireshark", "Metasploit", "Nmap", "Photoshop"],
+          correcta: ["b", "c"],
+          multiple: true,
+        },
+        {
+          pregunta: "¿Qué es el cifrado en ciberseguridad?",
+          opciones: [
+            "Un método para eliminar datos",
+            "Un proceso para ocultar datos",
+            "Un sistema para copiar datos",
+            "Un método para fragmentar datos",
+          ],
+          correcta: "b",
+        },
+        {
+          pregunta: "¿Cuál es el objetivo de un ataque de fuerza bruta?",
+          opciones: [
+            "Deshabilitar un sistema",
+            "Descifrar contraseñas",
+            "Interceptar comunicaciones",
+            "Instalar software malicioso",
+          ],
+          correcta: "b",
+        },
+        {
+          pregunta:
+            "¿Qué protocolo se utiliza para transferir archivos de forma segura?",
+          opciones: ["FTP", "HTTPS", "SFTP", "SMTP"],
+          correcta: "c",
+        },
+        {
+          pregunta:
+            "¿Qué tipo de ataque utiliza múltiples sistemas para inundar un objetivo?",
+          opciones: ["Phishing", "DDoS", "Malware", "Sniffing"],
+          correcta: "b",
+        },
+        {
+          pregunta: '¿Qué significa el término "patching" en ciberseguridad?',
+          opciones: [
+            "Actualizar software para corregir vulnerabilidades",
+            "Eliminar archivos temporales",
+            "Instalar software adicional",
+            "Deshabilitar funciones no necesarias",
+          ],
+          correcta: "a",
+        },
+        {
+          pregunta: "¿Qué herramienta se usa comúnmente para monitorear redes?",
+          opciones: ["Metasploit", "Nmap", "Wireshark", "Photoshop"],
+          correcta: "c",
+        },
+        {
+          pregunta: "¿Qué método ayuda a prevenir ataques de inyección SQL?",
+          opciones: [
+            "Cifrado de datos",
+            "Uso de consultas preparadas",
+            "Bloqueo de puertos",
+            "Actualización de software",
+          ],
+          correcta: "b",
+        },
+        {
+          pregunta: "¿Qué es una VPN?",
+          opciones: [
+            "Un software antivirus",
+            "Un método de encriptación",
+            "Una red privada virtual",
+            "Un servidor web",
+          ],
+          correcta: "c",
+        },
+        {
+          pregunta: '¿Qué significa "ransomware"?',
+          opciones: [
+            "Un tipo de malware que cifra datos para pedir rescate",
+            "Un virus que desactiva el software antivirus",
+            "Un método de phishing avanzado",
+            "Un ataque basado en redes sociales",
+          ],
+          correcta: "a",
+        },
+        {
+          pregunta: "¿Cuál es el objetivo principal del protocolo HTTPS?",
+          opciones: [
+            "Aumentar la velocidad de carga",
+            "Proporcionar comunicación segura",
+            "Bloquear malware",
+            "Reducir el tráfico de red",
+          ],
+          correcta: "b",
+        },
+        {
+          pregunta:
+            "Verdadero o falso: Es seguro hacer clic en cualquier enlace recibido por correo electrónico.",
+          opciones: ["Verdadero", "Falso"],
+          correcta: "b",
+        },
+        {
+          pregunta: "¿Qué herramienta se utiliza para pruebas de penetración?",
+          opciones: ["Excel", "Metasploit", "Wireshark", "Photoshop"],
+          correcta: "b",
+        },
+        {
+          pregunta: "¿Qué protocolo es inseguro para transferir datos?",
+          opciones: ["SFTP", "FTP", "HTTPS", "TLS"],
+          correcta: "b",
+        },
+        {
+          pregunta:
+            "¿Qué tipo de ataque explota vulnerabilidades en software desactualizado?",
+          opciones: ["Zero-Day", "Phishing", "DDoS", "Ransomware"],
+          correcta: "a",
+        },
+        {
+          pregunta: "Selecciona dos métodos para proteger un servidor web:",
+          opciones: [
+            "Usar un firewall",
+            "Hacer copias de seguridad",
+            "Deshabilitar HTTPS",
+            "Mantener el software actualizado",
+          ],
+          correcta: ["a", "d"],
+          multiple: true,
+        },
+        {
+          pregunta:
+            "¿Qué técnica se utiliza para engañar a una víctima haciéndola revelar información sensible?",
+          opciones: ["Phishing", "DDoS", "Man-in-the-middle", "Spoofing"],
+          correcta: "a",
+        },
+        {
+          pregunta: "¿Qué puerto se usa comúnmente para HTTPS?",
+          opciones: ["80", "22", "443", "25"],
+          correcta: "c",
+        },
+        {
+          pregunta:
+            "¿Qué tipo de malware recopila información del usuario sin su conocimiento?",
+          opciones: ["Ransomware", "Spyware", "Adware", "Worm"],
+          correcta: "b",
+        },
+        {
+          pregunta: "¿Cuál es el primer paso en una evaluación de riesgos?",
+          opciones: [
+            "Implementar controles de seguridad",
+            "Identificar activos",
+            "Analizar vulnerabilidades",
+            "Mitigar riesgos",
+          ],
+          correcta: "b",
+        },
+        {
+          pregunta: "¿Qué es una prueba de penetración?",
+          opciones: [
+            "Un ataque a la red",
+            "Una evaluación de seguridad controlada",
+            "Un método para deshabilitar firewalls",
+            "Un ataque malicioso",
+          ],
+          correcta: "b",
+        },
+        {
+          pregunta:
+            "¿Qué protocolo se recomienda para enviar correos electrónicos de forma segura?",
+          opciones: ["SMTP", "IMAP", "POP3", "SMTP con STARTTLS"],
+          correcta: "d",
+        },
+        {
+          pregunta:
+            "Verdadero o falso: Un certificado SSL asegura completamente un sitio web contra ataques.",
+          opciones: ["Verdadero", "Falso"],
+          correcta: "b",
+        },
+        {
+          pregunta: '¿Qué significa el término "social engineering"?',
+          opciones: [
+            "Ataque basado en engaños y manipulación humana",
+            "Un método para crackear contraseñas",
+            "Un sistema de análisis de tráfico",
+            "Una técnica de cifrado",
+          ],
+          correcta: "a",
+        },
+      ];
+
+      const container = document.getElementById("questions");
+
+      preguntas.forEach((pregunta, index) => {
+        const div = document.createElement("div");
+        div.classList.add("question");
+        div.innerHTML = `<p>${index + 1}. ${pregunta.pregunta}</p>`;
+        const opcionesDiv = document.createElement("div");
+        opcionesDiv.classList.add("options");
+        pregunta.opciones.forEach((opcion, i) => {
+          const inputType = pregunta.multiple ? "checkbox" : "radio";
+          opcionesDiv.innerHTML += `<label><input type="${inputType}" name="q${
+            index + 1
+          }" value="${String.fromCharCode(97 + i)}"> ${String.fromCharCode(
+            97 + i
+          )}) ${opcion}</label>`;
+        });
+        div.appendChild(opcionesDiv);
+        container.appendChild(div);
+      });
+
+      function calcularResultados() {
+        let puntaje = 0;
+
+        preguntas.forEach((pregunta, index) => {
+          const inputs = document.querySelectorAll(
+            `input[name="q${index + 1}"]:checked`
+          );
+          const valoresSeleccionados = Array.from(inputs).map(
+            (input) => input.value
+          );
+
+          if (pregunta.multiple) {
+            if (
+              JSON.stringify(valoresSeleccionados.sort()) ===
+              JSON.stringify(pregunta.correcta.sort())
+            ) {
+              puntaje++;
+            }
+          } else {
+            if (valoresSeleccionados[0] === pregunta.correcta) {
+              puntaje++;
+            }
+          }
+        });
+
+        const porcentaje = (puntaje / preguntas.length) * 100;
+        let resultadoHTML = `<p>Puntaje final: ${puntaje}/${
+          preguntas.length
+        } (${porcentaje.toFixed(2)}%)</p>`;
+
+        if (porcentaje < 70) {
+          resultadoHTML += `<div class="alert">Reprobado</div>`;
+          resultadoHTML += `<button class="retry-button" onclick="reiniciarPrueba()">Repetir prueba</button>`;
+        }
+
+        document.getElementById("resultados").innerHTML = resultadoHTML;
+      }
+
+      function reiniciarPrueba() {
+        document.getElementById("quizForm").reset();
+        document.getElementById("resultados").innerHTML = "";
+      }
+    </script>
+  </body>
+</html>

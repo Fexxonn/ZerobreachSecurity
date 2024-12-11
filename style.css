@@ -1,0 +1,287 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+section {
+  height: 100vh;
+}
+
+/* Seccion inicial */
+
+.section_hero {
+  background: linear-gradient(-90deg, transparent 10%, white 100%),
+    url(./public/Fondo1.jpg) center/cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.section_hero nav {
+  width: 100%;
+  padding: 1pc 5pc;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.section_hero nav a {
+  color: black;
+  text-decoration: none;
+}
+
+.section_hero nav div {
+  display: flex;
+  gap: 1pc;
+}
+
+.hero_title {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  align-items: center;
+}
+.hero_title img {
+  height: clamp(100px, 40vw, 400px);
+}
+.hero_title .title_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 500px;
+  height: 400px;
+}
+.hero_title .title_text h1 {
+  font-size: clamp(1rem, 4vw, 2.4rem);
+  font-weight: 400;
+  width: auto;
+}
+.hero_title .title_text h2 {
+  font-size: clamp(0.5rem, 3.5vw, 1.2rem);
+  font-weight: 500;
+}
+
+.hero_anuncio {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 2pc;
+}
+
+.anuncio_text {
+  width: 100%;
+  max-width: 700px;
+  height: 50px;
+  margin: 0 2pc;
+  background: url(./img/promoción.png) center/contain no-repeat;
+}
+
+/* Seccion que incita a las personas a capacitarce */
+
+.section_capacitate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 3pc;
+  background: #07133d;
+  color: white;
+
+  padding: 1pc;
+}
+
+.section_capacitate div h3 {
+  font-size: clamp(0.5rem, 4vw, 1.6rem);
+}
+.section_capacitate div p {
+  font-size: clamp(0.2rem, 3vw, 1.2rem);
+  max-height: 400px;
+  min-width: 300px;
+}
+.section_capacitate img {
+  display: flex;
+  height: clamp(10px, 40vw, 400px);
+}
+
+/* seccion de lista */
+
+.section_impacto {
+  display: flex;
+  gap: 2pc;
+
+  justify-content: center;
+  align-items: center;
+
+  background: #07133d;
+}
+
+.impacto_img {
+  display: flex;
+  gap: 3pc;
+  flex-direction: column;
+}
+.section_impacto h3 {
+  font-size: 40px;
+  color: white;
+  font-weight: 400;
+}
+.section_impacto img {
+  height: clamp(100px, 20vw, 250px);
+}
+.section_impacto .ul {
+  background-color: #004a98;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 500px;
+  height: 70%;
+  color: white;
+
+  gap: 3pc;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.section_impacto .ul p {
+  display: flex;
+  align-items: center;
+
+  text-align: left;
+
+  font-size: clamp(1rem, 2vw, 1.2rem);
+
+  gap: 1.5pc;
+  width: 100%;
+  padding: 0 2pc 0;
+}
+.section_impacto .ul p span {
+  font-size: 45px;
+}
+
+.container_impacto {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 1pc;
+
+  height: 100%;
+}
+
+/* ################################### */
+
+/* section_caso_real */
+
+.section_caso_real {
+  background: #06213e;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+}
+.section_caso_real img {
+  width: clamp(100px, 30vw, 400px);
+}
+
+.section_caso_real h2 {
+  font-size: clamp(10px, 7vmin, 40px);
+  max-width: 400px;
+  font-weight: 400;
+}
+.section_caso_real p {
+  font-size: clamp(10px, 7vmin, 20px);
+  max-width: 500px;
+  font-weight: 400;
+}
+.section_caso_real a {
+  background: #004a98;
+
+  padding: 0.5pc 2pc;
+  color: white;
+  text-decoration: none;
+
+  font-weight: 600;
+
+  text-align: center;
+}
+.content_caso_real {
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  flex-direction: column;
+
+  text-align: left;
+  gap: 2pc;
+}
+/* ################### */
+
+.section_tipo_prueba {
+  background: url(./public/Fondo2.jpg) center/cover no-repeat;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 1pc;
+}
+
+.section_tipo_prueba ol {
+  text-align: center;
+  list-style: none;
+}
+.section_tipo_prueba ol li {
+  padding: 0.3pc 0;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+footer {
+  position: sticky;
+  top: 95%;
+}
+
+.bot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+
+  width: 150px;
+
+  position: fixed;
+  left: 88%;
+  top: 80%;
+  color: white;
+}
+
+.bot img {
+  width: 70px;
+  border-radius: 150px;
+
+  box-shadow: 0 0 10px 0 #1a2633;
+}
+
+.bot p {
+  width: 150px;
+  text-align: center;
+  font-size: 15px;
+}
+i {
+  text-align: center;
+}
