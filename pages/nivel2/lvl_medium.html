@@ -68,6 +68,10 @@
         transition: background-color 0.3s;
       }
 
+      button a {
+        text-decoration: none;
+        color: white;
+      }
       button:hover {
         background-color: #0056b3;
       }
@@ -395,9 +399,12 @@
           preguntas.length
         } (${porcentaje.toFixed(2)}%)</p>`;
 
-        if (porcentaje < 70) {
+        if (porcentaje < 1) {
           resultadoHTML += `<div class="alert">Reprobado</div>`;
-          resultadoHTML += `<button class="retry-button" onclick="reiniciarPrueba()">Repetir prueba</button>`;
+          resultadoHTML += `<button class="retry-button" onclick="reiniciarPrueba()">Repetir prueba</button> <br><br>`;
+          resultadoHTML += `<button class="retry-button" > <a href="../Certificados.html">Regresar</a> </button>`;
+        } else {
+          resultadoHTML += `<button class="retry-button" > <a href="../Certificados.html">Regresar</a> </button>`;
         }
 
         document.getElementById("resultados").innerHTML = resultadoHTML;
